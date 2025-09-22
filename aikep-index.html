@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ΚΕΠ – Υπηρεσίες & Επικοινωνία</title>
+  <style>
+    :root{ --yellow:#F2C400; --yellowLight:#FFF6B0; --dark:#222; --muted:#6b7280; --max:1100px; --radius:16px; }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--yellowLight);color:var(--dark);line-height:1.6}
+    a{color:#0b57d0;text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:40;background:var(--yellow);border-bottom:1px solid var(--dark)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .nav a.logo{display:flex;align-items:center;gap:14px;font-weight:700;color:var(--dark)}
+    .nav img{width:44px;height:44px}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .btn{display:inline-block;padding:10px 14px;border-radius:999px;font-weight:700;border:1px solid var(--dark);color:var(--dark);background:var(--yellow)}
+    .btn.secondary{background:#fff}
+    .btn:hover{filter:brightness(.98);text-decoration:none}
+    .hero{padding:54px 0 32px;background:linear-gradient(180deg, #fff8c6 0%, #fff 100%)}
+    .hero h1{font-size:clamp(2rem,4.5vw,3rem);line-height:1.2;margin:10px 0}
+    .hero p{font-size:1.06rem;color:#374151;max-width:800px}
+    section{padding:44px 0;border-top:1px solid #eee}
+    h2{font-size:1.8rem;margin:0 0 14px}
+    .card{background:#fff;border:1px solid #e6d86a;border-radius:var(--radius);padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+    .list{display:grid;gap:12px}
+    .muted{color:var(--muted)}
+    .dropdown{position:relative}
+    .dropdown-btn{background:none;border:none;cursor:pointer;font:inherit}
+    .dropdown-menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid #ddd;border-radius:12px;padding:8px;min-width:290px;box-shadow:0 10px 20px rgba(0,0,0,.08);display:none}
+    .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--dark)}
+    .dropdown-menu a:hover{background:#f7f7f7}
+    .hamburger{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--dark);padding:8px 12px;border-radius:12px;background:var(--yellowLight)}
+    .mobile{display:none;border-top:1px solid var(--dark);background:var(--yellow)}
+    .mobile a{display:block;padding:10px 16px;text-decoration:none}
+    @media (max-width: 900px){ .nav ul{display:none} }
+    footer{border-top:1px solid var(--dark);background:var(--yellow);margin-top:30px;padding:18px 0;color:var(--dark)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Αρχική">
+        <img alt="@ΚΕΠ" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAApKEAAABpGSURBVHic7Zx/jFzVfcf/59y2p4QkR2q6JXkq0oYh0oQb3b1yQkQ4cY6m3l2lFQkW0/6rX6q6yLWw1F6rWgS4p0Tq0d6y0a8QdJQwZQqkQZQ0p9w3UqMZf5gq1kQ7m2GmG/e5u3Z+7z3nnnPu+9+3EwQm3gkQm0wYHf8q4o3Y1o5vUe1xv3n8KXz3D3Hk3eXw8PD6+rrKysrE3/9+o+9fWg0Gk0qlYqOjo0VFRfHx8YmJibGxsUlJSJpPJMplM3d3dBQQEhoaGQqFQFhYWSUlJQ0PDp0+fPn36dLS0tJSUl4eHh8fHxMplM0Gg0Wq1WbW1t5eXl3Nzc8PDw0NDQzMzM0NDQ7Ozs0Gg0aGhohISEhYWF6enpgYGBWVlZ7e3u9vb2urq6nTp1y8vL09PTr1+/HxcXFx8fHq1evEAgE4uLiCwsLk5OTQ0NDvb29mpqaQ0NDNzc3c3NzjY2N7e3sajQYqlQqLi4uqqqqiYmJ4uLi/Pz8Xr16pVKpVqtVgYGBcHBw/Pz89fX1QKBQ5OTkREREmJiYmJibm5uVqtVnV1daurq2tra3Z2dnR0dE2m42goCDBwcGEhIS4uLhSUlI0Gg0SiQSWlpbq6uqy2Uwmk0kRERFVVVUQCAQajUZBQUGdnZ0SiYQPP/ywYcMGBQWFwsLCmpub6+vr6urqOjo6i4uLw8PD58+f37t1bXFzc7du33W63tra2c3Nzq1atwsLCsrKypKSktra2aGhoQkJC1tbWc3NzS0tLm5ubq6urDhw/7+voeHh7GxsaSkpKysrK9evUqFAorKyvV1dU5OTl6enouLi7e3t2JiYtLS0oKAgWq1W0dHRhISEhoaGEolE1tbWQqGQx+MBg8GQmJiY3NzcIyMjAwMDMzMz9/f2goCDt27eTk5OTk5Obm5s7OzvX19X///jQaDTU1NYmJiX19fS8vL1dXVxMTE1NTUe/fu8PDwyMjI2NjZKS0tYWFjIyMi8vLy8vLwqFQmZmZ69evv/76S0tLYmJiKioq4uLiWlpaampq9evUyMjIuLi6FQiFVVVX379k1PT9fW1hYWFo6OjpiYGBwcHBsbG6urqampqZ2dnQ0NDTk5OXp6en19fXb29vXr17Nzc0qKyvFxcWurq6VlZWSkpKtra3Z2dmZmZmhoaH6+vrh4eHo6Oj+/v5YWFhDQ0Pbt28rKyuFQiH9/f0ajcZmsxkKhYKSkpKAgAB1dXVYWFg0Gg3p6enV1dXe3t7h4eHq6uq2trb5+fk0Gk2ZmZkUCgXr16+rq6sSiURfX19FRUV9fX1oaGgkEgmZmZmxsTEQCAQmJiYQCAQWq3W4uLiVCoV9fX3p6emHh4e+vr4wGAx5eXkODg7r6+sSiQQ6nQ4GBgYiIiLq6uo0Gg0SiURZWVkmk8mOjo69evXKysqYmJjCwsL19fV4eHjT09N6enpYWFhOTk5BQUFAoFAWq3W1NRUjo6OQ0NDgYGBkZGRSCSiUCi0Wi0mJiY3bt3Ky8vZ2dn6+vr4+PjGxsbz58/39/fKysqmpqZ/f38wGAxv377t2rWrs7NzQ0NDp6enr1+/rq6u8vLy2dnZp0+f1dXVhYWF9PT0mZmZ2dnZEIlEHR0dtra2V1dXQ0NDtra2JiYmYmJi0Wi0O3fujIyM9PT0UFBQTk5Oer1eIhEJLpdLbW1tDw8PpVKpRCKR7u7uKioq9vb2IyMjw8PDbW1tEolE09PTV69eLS0tWq0WgUCg9PT0WiwXf7x8hQAAECBAgQIECAAAECBFoC+g4YQAAECBAgQIAAAQIECHh7gZ4x/7oAAL9/6bqfO1kqf1gAAAABJRU5ErkJggg==" />
+        <span>@ΚΕΠ</span>
+      </a>
+      <ul>
+        <li><a href="#home">Αρχική</a></li>
+        <li class="dropdown">
+          <button class="dropdown-btn" id="services-btn" aria-expanded="false">Υπηρεσίες ▾</button>
+          <div class="dropdown-menu" id="services-menu">
+            <a target="_blank" href="#eforia">Εφορία</a>
+            <a target="_blank" href="#efka-dypa">ΕΦΚΑ - ΔΥΠΑ</a>
+            <a target="_blank" href="#epidomata">Επιδόματα</a>
+            <a target="_blank" href="#metavivaseis">Μεταβιβάσεις ΙΧ ΜΟΤΟ</a>
+            <a target="_blank" href="#xrimatikes">Υπηρεσίες Χρηματικών Συναλλαγών</a>
+            <a target="_blank" href="#taxydromikes">Ταχυδρομικές υπηρεσίες</a>
+            <a target="_blank" href="#loipes">Λοιπές Υπηρεσίες</a>
+            <a target="_blank" href="#epixeiriseis">Υπηρεσίες για Επιχειρήσεις</a>
+          </div>
+        </li>
+        <li><a href="#contact">Επικοινωνία</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">Μενού</button>
+    </div>
+    <div class="mobile" id="mobile">
+      <div class="container">
+        <a href="#home">Αρχική</a>
+        <div class="muted" style="padding:8px 0 6px">Υπηρεσίες</div>
+        <div class="list" style="background:#fff;border-radius:12px;padding:8px">
+          <a target="_blank" href="#eforia">Εφορία</a>
+          <a target="_blank" href="#efka-dypa">ΕΦΚΑ - ΔΥΠΑ</a>
+          <a target="_blank" href="#epidomata">Επιδόματα</a>
+          <a target="_blank" href="#metavivaseis">Μεταβιβάσεις ΙΧ ΜΟΤΟ</a>
+          <a target="_blank" href="#xrimatikes">Υπηρεσίες Χρηματικών Συναλλαγών</a>
+          <a target="_blank" href="#taxydromikes">Ταχυδρομικές υπηρεσίες</a>
+          <a target="_blank" href="#loipes">Λοιπές Υπηρεσίες</a>
+          <a target="_blank" href="#epixeiriseis">Υπηρεσίες για Επιχειρήσεις</a>
+        </div>
+        <a href="#contact">Επικοινωνία</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>Καλώς ήλθατε στο @ΚΕΠ</h1>
+        <p>Στο @ΚΕΠ αναλαμβάνουμε όλες τις διαδικασίες για εσάς — από φορολογικά και ασφαλιστικά θέματα μέχρι αιτήσεις επιδομάτων και διεκπεραιώσεις δημοσίων υπηρεσιών.</p>
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#eforia">Δείτε Υπηρεσίες</a>
+          <a class="btn secondary" href="#contact">Επικοινωνία</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="eforia" class="container hidden">
+      <h2>Εφορία</h2>
+      <div class="list">
+        <div class="card"><h3>1. Έκδοση ΑΦΜ/Κλειδαρίθμου</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>2. Φορολογικές Δηλώσεις</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>3. Ε9</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>4. Δηλώσεις θανόντα</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>5. Μισθωτήρια (μακροχρόνια και βραχυχρόνια μίσθωση – AIRBNB)</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>6. Φορολογική Ενημερότητα</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>7. Πιστοποιητικά ΕΝΦΙΑ</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>8. Εκτυπώσεις taxisnet</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>9. Ρυθμίσεις Οφειλών</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>10. Διεκπεραιώσεις ΔΟΥ</h3><p class="muted">Περιγραφή…</p></div>
+        <div class="card"><h3>11. Κάτοικοι εξωτερικού</h3><p class="muted">Περιγραφή…</p></div>
+      </div>
+    </section>
+
+    <section id="efka-dypa" class="container hidden">
+      <h2>ΕΦΚΑ - ΔΥΠΑ</h2>
+      <div class="list">
+        <div class="card"><h3>1. Βεβαίωση απογραφής ΑΜΚΑ-ΑΜΑ</h3></div>
+        <div class="card"><h3>2. Εκτύπωση Ενσήμων</h3></div>
+        <div class="card"><h3>3. Εκτύπωση Βεβαίωση προϋπηρεσίας</h3></div>
+        <div class="card"><h3>4. Έκδοση Κάρτας Ανεργίας</h3></div>
+        <div class="card"><h3>5. Αίτηση Ταμείου Ανεργίας</h3></div>
+        <div class="card"><h3>6. Ανανέωση κάρτας Ανεργίας</h3></div>
+        <div class="card"><h3>7. Πιστοποιητικό -βεβαιώσεις Ανεργίας</h3></div>
+        <div class="card"><h3>8. Άυλη συνταγογράφηση</h3></div>
+        <div class="card"><h3>9. Προσωπικός Ιατρός</h3></div>
+        <div class="card"><h3>10. Έκδοση Ευρωπαϊκής Κάρτας Ασφάλισης</h3></div>
+        <div class="card"><h3>11. Έκδοση Ασφαλιστικής Ενημερότητας</h3></div>
+        <div class="card"><h3>12. Οικοδομικά Ένσημα</h3></div>
+        <div class="card"><h3>13. Διεκπεραιώσεις ΕΦΚΑ</h3></div>
+        <div class="card"><h3>14. Εργατικά – Οικοδομικά</h3>
+          <ul>
+            <li>Κατάθεση ΑΠΔ Οικοδομικών Ενσήμων</li>
+            <li>Εκτύπωση εντύπων πρόσληψης/απόλυσης</li>
+            <li>Βεβαίωση απογραφής ΑΜΚΑ-ΑΜΑ</li>
+            <li>Εκτύπωση Ενσήμων</li>
+            <li>Εκτύπωση Βεβαίωση προϋπηρεσίας</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="epidomata" class="container hidden">
+      <h2>Επιδόματα</h2>
+      <div class="list">
+        <div class="card"><h3>1. Επίδομα Παιδιού (Α21)</h3></div>
+        <div class="card"><h3>2. Επίδομα Γέννησης - Μητρότητας</h3></div>
+        <div class="card"><h3>3. Φοιτητικό – Στεγαστικό Επίδομα</h3></div>
+        <div class="card"><h3>4. Επίδομα Στέγασης</h3></div>
+        <div class="card"><h3>5. Κοινωνικό Τιμολόγιο Ρεύματος</h3></div>
+        <div class="card"><h3>6. Κοινωνικό Εισόδημα Αλληλεγγύης (ΚΕΑ)</h3></div>
+        <div class="card"><h3>7. Κοινωνικός Τουρισμός – Τουρισμός για Όλους</h3></div>
+        <div class="card"><h3>8. Λοιπά</h3>
+          <ul>
+            <li>Έξοδα κηδείας</li>
+            <li>Αποζημίωση Οπτικών</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="metavivaseis" class="container hidden">
+      <h2>Μεταβιβάσεις ΙΧ / ΜΟΤΟ</h2>
+      <div class="card"><p>Αναλαμβάνουμε πλήρως τον φάκελο μεταβίβασης με ενημέρωση για δικαιολογητικά και προθεσμίες.</p></div>
+    </section>
+
+    <section id="xrimatikes" class="container hidden">
+      <h2>Υπηρεσίες Χρηματικών Συναλλαγών</h2>
+      <div class="list">
+        <div class="card"><h3>Μεταφορές Χρημάτων</h3><p class="muted">Διαθέσιμες επιλογές domestic & SEPA.</p></div>
+        <div class="card"><h3>Πληρωμές Λογαριασμών</h3><p class="muted">ΔΕΚΟ, τηλεφωνία, e-παράβολα κ.ά.</p></div>
+      </div>
+    </section>
+
+    <section id="taxydromikes" class="container hidden">
+      <h2>Ταχυδρομικές υπηρεσίες</h2>
+      <div class="card"><p>Αποστολές, παραλαβές και διεκπεραιώσεις ταχυδρομικών υπηρεσιών.</p></div>
+    </section>
+
+    <section id="loipes" class="container hidden">
+      <h2>Λοιπές Υπηρεσίες</h2>
+      <div class="list">
+        <div class="card"><h3>1. Τραπεζικές υπηρεσίες</h3></div>
+        <div class="card"><h3>2. Υπηρεσίες Ληξιαρχείου</h3>
+          <ul>
+            <li>Πιστοποιητικά Οικογενειακής Κατάστασης</li>
+            <li>Πιστοποιητικό Γέννησης</li>
+            <li>Ονοματοδοσία</li>
+            <li>Δήλωση βάπτισης</li>
+          </ul>
+        </div>
+        <div class="card"><h3>3. Πιστοποιητικό Εγγυτέρων Συγγενών</h3></div>
+        <div class="card"><h3>4. Ποινικό μητρώο</h3></div>
+        <div class="card"><h3>5. Πιστοποιητικό Φερεγγυότητας</h3></div>
+        <div class="card"><h3>6. Αιτήσεις ΑΣΕΠ και Δήμων</h3></div>
+        <div class="card"><h3>7. Αιτήσεις ΚΕΠΑ - εισηγητικός φάκελος</h3></div>
+        <div class="card"><h3>8. Πιστοποιητικά κτηματολογίου</h3></div>
+      </div>
+    </section>
+
+    <section id="epixeiriseis" class="container hidden">
+      <h2>Υπηρεσίες για Επιχειρήσεις</h2>
+      <div class="card"><p>Παρέχουμε ολοκληρωμένη υποστήριξη σε επιχειρήσεις για διοικητικές διαδικασίες, αιτήσεις προγραμμάτων, φορολογικά και ασφαλιστικά ζητήματα.</p></div>
+    </section>
+
+    <section id="contact" class="container hidden">
+      <h2>Επικοινωνία</h2>
+      <div class="list">
+        <div class="card">
+          <div class="list">
+            <div>Διεύθυνση: <strong>Οδός, Αριθμός, Πόλη, ΤΚ</strong></div>
+            <div>Τηλέφωνο: <a class="underline" href="tel:2410670930">2410670930</a></div>
+            <div>Viber: <a class="underline" href="viber://chat?number=%2B306945356600">6945356600</a></div>
+            <div>Email: <a class="underline" href="mailto:aikep.93@gmail.com">aikep.93@gmail.com</a></div>
+            <div>Facebook: <a class="underline" target="_blank" href="https://www.facebook.com/aiKEP93">@aiKEP93</a></div>
+            <div class="muted">Μείνετε ενημερωμένοι – ακολουθήστε μας στα social.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;gap:14px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img alt="@ΚΕΠ" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAApKEAAABpGSURBVHic7Zx/jFzVfcf/59y2p4QkR2q6JXkq0oYh0oQb3b1yQkQ4cY6m3l2lFQkW0/6rX6q6yLWw1F6rWgS4p0Tq0d6y0a8QdJQwZQqkQZQ0p9w3UqMZf5gq1kQ7m2GmG/e5u3Z+7z3nnnPu+9+3EwQm3gkQm0wYHf8q4o3Y1o5vUe1xv3n8KXz3D3Hk3eXw8PD6+rrKysrE3/9+o+9fWg0Gk0qlYqOjo0VFRfHx8YmJibGxsUlJSJpPJMplM3d3dBQQEhoaGQqFQFhYWSUlJQ0PDp0+fPn36dLS0tJSUl4eHh8fHxMplM0Gg0Wq1WbW1t5eXl3Nzc8PDw0NDQzMzM0NDQ7Ozs0Gg0aGhohISEhYWF6enpgYGBWVlZ7e3u9vb2urq6nTp1y8vL09PTr1+/HxcXFx8fHq1evEAgE4uLiCwsLk5OTQ0NDvb29mpqaQ0NDNzc3c3NzjY2N7e3sajQYqlQqLi4uqqqqiYmJ4uLi/Pz8Xr16pVKpVqtVgYGBcHBw/Pz89fX1QKBQ5OTkREREmJiYmJibm5uVqtVnV1daurq2tra3Z2dnR0dE2m42goCDBwcGEhIS4uLhSUlI0Gg0SiQSWlpbq6uqy2Uwmk0kRERFVVVUQCAQajUZBQUGdnZ0SiYQPP/ywYcMGBQWFwsLCmpub6+vr6urqOjo6i4uLw8PD58+f37t1bXFzc7du33W63tra2c3Nzq1atwsLCsrKypKSktra2aGhoQkJC1tbWc3NzS0tLm5ubq6urDhw/7+voeHh7GxsaSkpKysrK9evUqFAorKyvV1dU5OTl6enouLi7e3t2JiYtLS0oKAgWq1W0dHRhISEhoaGEolE1tbWQqGQx+MBg8GQmJiY3NzcIyMjAwMDMzMz9/f2goCDt27eTk5OTk5Obm5s7OzvX19X///jQaDTU1NYmJiX19fS8vL1dXVxMTE1NTUe/fu8PDwyMjI2NjZKS0tYWFjIyMi8vLy8vLwqFQmZmZ69evv/76S0tLYmJiKioq4uLiWlpaampq9evUyMjIuLi6FQiFVVVX379k1PT9fW1hYWFo6OjpiYGBwcHBsbG6urqampqZ2dnQ0NDTk5OXp6en19fXb29vXr17Nzc0qKyvFxcWurq6VlZWSkpKtra3Z2dmZmZmhoaH6+vrh4eHo6Oj+/v5YWFhDQ0Pbt28rKyuFQiH9/f0ajcZmsxkKhYKSkpKAgAB1dXVYWFg0Gg3p6enV1dXe3t7h4eHq6uq2trb5+fk0Gk2ZmZkUCgXr16+rq6sSiURfX19FRUV9fX1oaGgkEgmZmZmxsTEQCAQmJiYQCAQWq3W4uLiVCoV9fX3p6emHh4e+vr4wGAx5eXkODg7r6+sSiQQ6nQ4GBgYiIiLq6uo0Gg0SiURZWVkmk8mOjo69evXKysqYmJjCwsL19fV4eHjT09N6enpYWFhOTk5BQUFAoFAWq3W1NRUjo6OQ0NDgYGBkZGRSCSiUCi0Wi0mJiY3bt3Ky8vZ2dn6+vr4+PjGxsbz58/39/fKysqmpqZ/f38wGAxv377t2rWrs7NzQ0NDp6enr1+/rq6u8vLy2dnZp0+f1dXVhYWF9PT0mZmZ2dnZEIlEHR0dtra2V1dXQ0NDtra2JiYmYmJi0Wi0O3fujIyM9PT0UFBQTk5Oer1eIhEJLpdLbW1tDw8PpVKpRCKR7u7uKioq9vb2IyMjw8PDbW1tEolE09PTV69eLS0tWq0WgUCg9PT0WiwXf7x8hQAAECBAgQIECAAAECBFoC+g4YQAAECBAgQIAAAQIECHh7gZ4x/7oAAL9/6bqfO1kqf1gAAAABJRU5ErkJggg==" />
+        <strong>@ΚΕΠ</strong>
+      </div>
+      <div>© <span id="y"></span> @ΚΕΠ — Όλα τα δικαιώματα διατηρούνται.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('services-btn');
+    const menu = document.getElementById('services-menu');
+    if(btn){
+      btn.addEventListener('click',()=>{
+        const open = menu.style.display === 'block';
+        menu.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+      document.addEventListener('click',(e)=>{
+        if(!menu.contains(e.target) && e.target!==btn){ menu.style.display='none'; btn.setAttribute('aria-expanded','false'); }
+      });
+    }
+    const hamburger = document.getElementById('hamburger');
+    const mobile = document.getElementById('mobile');
+    if(hamburger){ hamburger.addEventListener('click',()=> mobile.style.display = (mobile.style.display==='block' ? 'none' : 'block')); }
+    const sections = Array.from(document.querySelectorAll('main section'));
+    function show(id){ sections.forEach(s=> s.classList.add('hidden')); (document.getElementById(id)||document.getElementById('home')).classList.remove('hidden'); if(mobile) mobile.style.display='none'; if(menu) menu.style.display='none'; }
+    window.addEventListener('hashchange',()=>show(location.hash.replace('#','')));
+    show(location.hash.replace('#','')||'home');
+  </script>
+</body>
+</html>
